@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from "express";
+import { router } from "./router/index.router";
 import dotenv from "dotenv";
 import {testConnection} from './testConnection'
 import { sequelize } from "./config/sequelize";
@@ -8,11 +9,14 @@ import './models/association';
 dotenv.config();
 
 const app: Application = express();
+app.use(express.json());
 const port: number = parseInt(process.env.PORT ||"8000", 10);//10 es la base numérica
 
 app.get("/", (req: Request, res: Response): void => {
   res.send('Sistema bancario');
 });
+
+router(app)
 
 const startServer = async () => {
     try {

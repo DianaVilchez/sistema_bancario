@@ -1,0 +1,1 @@
+{"root":["./src/connetion.ts","./src/index.ts","./src/sequelize.ts","./src/controller/users.controller.ts","./src/router/index.router.ts","./src/router/users.router.ts"],"errors":true,"version":"5.6.3"}

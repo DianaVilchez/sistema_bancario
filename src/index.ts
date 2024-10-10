@@ -1,5 +1,9 @@
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
+import {testConnection} from './testConnection'
+import { sequelize } from "./config/sequelize";
+import { User, Account, Transaction } from './models';
+import './models/association';
 
 dotenv.config();
 
@@ -10,9 +14,21 @@ app.get("/", (req: Request, res: Response): void => {
   res.send('Sistema bancario');
 });
 
-app.listen(port, (): void => {
-  console.log('SERVER IS UP ON PORT:', port);
-})
+const startServer = async () => {
+    try {
+      await testConnection();
+      console.log('Database connected');
 
+      await sequelize.sync();
+      console.log('Database synchronized successfully!');
 
+      app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+      });
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
+};
+  
+startServer();
 

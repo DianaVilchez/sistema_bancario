@@ -13,8 +13,10 @@ export const getAllAccounts = async (req: Request, resp:Response): Promise<void>
 
 export const createAccount = async (req: Request, resp: Response): Promise<void> => { 
     try {
-        const { userId, balance } = req.body;
-        const account = await Account.create({ userId, balance });
+        const balance = req.body.account_balance;
+        console.log("🚀 ~ createAccount ~ balance:", balance)
+        const account = await Account.create({ balance });
+        console.log("🚀 ~ createAccount ~ account:", account)
         resp.json(account);   
     } catch (error) {
         resp.status(500).json("Error al crear la cuenta");

@@ -6,6 +6,6 @@ import { registerUser, loginUser } from "../controller/users.controller";
 const routerUsers: Router = express.Router();
 
 routerUsers.get('/login', loginUser)
-routerUsers.get('/create', registerUser);
+routerUsers.post('/create', registerUser);
 
 export { routerUsers };

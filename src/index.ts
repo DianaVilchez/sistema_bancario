@@ -16,7 +16,7 @@ app.get("/", (req: Request, res: Response): void => {
   res.send('Sistema bancario');
 });
 
-router(app)
+router(app);
 
 const startServer = async () => {
     try {

@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 import dotenv from 'dotenv';
 dotenv.config();
 
-if (!process.env.DATABASE || !process.env.DB_PASSWORD || !process.env.DB_HOST) {
+if (!process.env.DATABASE || !process.env.DB_PASSWORD ) {
     throw new Error('Las variables de entorno para la base de datos no están definidas');
 }
 // Configura la conexión a la base de datos

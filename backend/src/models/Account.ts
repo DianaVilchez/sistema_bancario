@@ -3,7 +3,7 @@ import { sequelize } from "../config/sequelize";
 import User from "./User";
 class Account extends Model {
     public id_account?: number;
-    public id_user!: number; 
+    public id_user?: number; 
     public account_balance!: number;
 }
 Account.init(
@@ -13,18 +13,19 @@ Account.init(
             primaryKey: true,
             autoIncrement: true,
             field: 'id_account', 
+            // allowNull: false,
         },
         id_user: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: User, 
                 key: 'id_user',
             },
+            allowNull: false, // Para asegurarte que siempre exista un usuario relacionado
         },
         account_balance: {
             type: DataTypes.DECIMAL,
-            allowNull: false,
+            allowNull: false, // Puede que quieras asegurarte de que siempre haya saldo
         },
     },
     {

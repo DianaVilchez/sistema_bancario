@@ -7,7 +7,8 @@ if (!process.env.DATABASE || !process.env.DB_PASSWORD ) {
 }
 // Configura la conexión a la base de datos
 export const sequelize = new Sequelize(process.env.DATABASE,process.env.USER ,process.env.DB_PASSWORD, {
-    host: 'localhost', 
+    host: process.env.HOST, 
+    port:process.env.DB_PORT,
     dialect: 'postgres', 
     logging: false
 });
